@@ -3,7 +3,7 @@
 
 nodes = [
 	{ :hostname => 'vm1', :ip => '10.245.1.202', :memory => 3076, :cpu => 2, :boxname => "ubuntu/trusty64" },
-        { :hostname => 'vm2', :ip => '10.245.1.222', :memory => 3076, :cpu => 2, :boxname => "centos/7" },
+    
 ]
 
 
