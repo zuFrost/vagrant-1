@@ -6,5 +6,5 @@ playbook.yml - Ansible provisioning playbook (example, with python3 and pip3 ins
 
 #How to use
 
-git clone
-vagrant up
+* git clone
+* vagrant up
