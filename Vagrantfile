@@ -1,29 +1,32 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-nodes = [
-	{ :hostname => 'vm1', :ip => '10.245.1.202', :memory => 3076, :cpu => 2, :boxname => "ubuntu/trusty64" },
-    
-]
-
-
 Vagrant.configure("2") do |config|
-  nodes.each do |node|
-      config.vm.box_check_update = false
-      config.vm.define node[:hostname] do |nodeconfig|
-          nodeconfig.vm.box = node[:boxname]
-          nodeconfig.vm.hostname = node[:hostname]
-	  nodeconfig.vm.network :private_network, ip: node[:ip]
-          nodeconfig.vm.provider :virtualbox do |vb|
-            vb.memory = node[:memory]
-            vb.cpus = node[:cpu]
-          end
-        end
+  config.vm.box = "generic/centos7"
+  config.vm.define "master" do |machine|
+  config.vm.box_check_update = false
+    machine.vm.network "private_network", ip: "192.168.99.100"
   end
-
-  config.vm.provision "ansible" do |ansible|
-     ansible.playbook = "playbook.yml"
+  config.vm.define "node1" do |machine|
+  config.vm.box_check_update = false
+    machine.vm.network "private_network", ip: "192.168.99.101"
   end
-  
-
+  config.vm.define "node2" do |machine|
+  config.vm.box_check_update = false
+    machine.vm.network "private_network", ip: "192.168.99.102"
+  end
+  config.vm.define "node3" do |machine|
+  config.vm.box_check_update = false
+    machine.vm.network "private_network", ip: "192.168.99.103"
+  end
+  config.vm.define "node4" do |machine|
+  config.vm.box_check_update = false
+    machine.vm.network "private_network", ip: "192.168.99.104"
+  end
+  config.vm.define "nodebd" do |machine|
+  config.vm.box_check_update = false
+    machine.vm.network "private_network", ip: "192.168.99.105"
+  end
 end
+
+
